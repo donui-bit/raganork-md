@@ -67,7 +67,7 @@ if (message.reply_message && message.reply_message.sticker){
         if (delete_again) return await message.sendReply(`_Removed ${match[1]} from sticked commands!_`)
         if (delete_again === false) return await message.sendReply("_No such sticker/command found!_")
     }
-    if (deleted && !match[1]) return await message.sendMessage("_No such sticker found!_");
+    if (deleted && !match[1]) return await message.send("_No such sticker found!_");
 }
 else if (match[1] && !message.reply_message) {
 let deleted = await unstickCmd(match[1])
@@ -101,7 +101,7 @@ return await message.sendReply("*Automute has been disabled in this group ❗*")
 var mregex = /[0-2][0-9] [0-5][0-9]/
 if (mregex.test(match[1]) === false) return await message.sendReply("*Wrong format!\n.automute 22 00 (For 10 PM)\n.automute 06 00 (For 6 AM)*");
 var admin = await isAdmin(message)
-if (!admin) return await message.sendReply("*I'm not admin*");
+if (!admin) return await message.sendReply("_I'm not admin_");
 await setAutoMute(message.jid,match[1]);
 await message.sendReply(`*Group will automatically mute at ${tConvert(match[1])}. Reconnecting..*`)
 process.exit(0)
@@ -221,10 +221,10 @@ Module({
         if (isFake(message.participant[0], allowed)) {
             var admin = await isAdmin(message);
             if (!admin) return;
-            await message.client.sendMessage(message.jid, {
+            /*await message.client.sendMessage(message.jid, {
                 text: "*Country code not allowed* @" + message.participant[0].split("@")[0],
                 mentions: [message.participant[0]]
-            });
+            });*/
             return await message.client.groupParticipantsUpdate(message.jid, [message.participant[0]], "remove")
         }
     }
