@@ -5,7 +5,7 @@
 		"whatsapp",
 		"bot"
 	],
-	"repository": "https://github.com/donui-bit/whatsapp-bot",
+	"repository": "https://github.com/donui-bit/raganork-md",
 	"stack": "container",
     "env": { 
         "HANDLERS": {
